@@ -1,4 +1,4 @@
-#!/bin/#!/usr/bin/env bash
+#!/bin/bash
 cat<<EOF
 Hello world
 I am process # $$
