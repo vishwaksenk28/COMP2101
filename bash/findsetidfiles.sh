@@ -23,3 +23,13 @@ echo "Setuid files:"
 echo "============="
 find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 3
 echo ""
+
+echo "setgid files:"
+echo "============="
+find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 5
+echo ""
+
+echo "10 largest files:"
+echo "============="
+find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 7 | head -10 | awk '{print $5,$6,$7}'
+echo ""
