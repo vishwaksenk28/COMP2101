@@ -31,5 +31,5 @@ echo ""
 
 echo "10 largest files:"
 echo "============="
-find / -type f -executable -perm -2000 -ls 2>/dev/null | sort -k 7 | head -10 | awk '{print $5,$6,$7}'
+find / -type f -executable du -h {} + 2>/dev/null | sort -h -r | head -n 10
 echo ""
