@@ -35,3 +35,6 @@ printf "\n"
 ###$firstnum divided by $secondnum is $dividend
 ###  - More precisely, it is $fpdividend
 ###EOF
+
+echo "The answer of the first number raised to the power of second number is echo $(($secondnum**$firstnum))"
+printf "\n"
