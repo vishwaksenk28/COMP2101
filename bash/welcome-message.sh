@@ -18,7 +18,6 @@
 # Variables   #
 ###############
 
-title=$til
 myname=$USER
 hostname=$(hostname)
 
@@ -26,20 +25,21 @@ time=$(date +"%r")
 day=$(date +"%a")
 
 if [[ $day = Mon ]];
-then til="Marvelous"
+ then title="Marvelous"
 elif [[ $day = Tue ]];
- then til="Talented"
+ then title="Talented"
 elif [[ $day = Wed ]];
- then til="Wonderous"
+ then title="Wonderous"
 elif [[ $day = Thu ]];
- then til=Tremendous
+ then title=Tremendous
 elif [[ $day = Fri ]];
- then til="fabulous"
+ then title="fabulous"
 elif [[ $day = Sat ]];
- then til="Sophisticated"
+ then title="Sophisticated"
 elif [[ $day = Sun ]];
- then til="Super"
+ then title="Super"
 fi
+
   #statements
 
 ###############
