@@ -18,10 +18,8 @@
 # Variables   #
 ###############
 
-#myname=$USER
-#hostname=$(hostname)
-
-OUTPUT="$(hostname)"
+myname=$USER
+hostname=$(hostname)
 
 time=$(date +"%r")
 day=$(date +"%a")
@@ -47,8 +45,9 @@ fi
 ###############
 # Main        #
 ###############
+cat <<EOF
 
-var="Welcome to planet ${OUTPUT},  $title $USER!
-It is $day at $time."
+Welcome to planet $hostname, "$title $myname!"
+It is $day at $time.
 
-cowsay ${var}
+EOF
