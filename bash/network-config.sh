@@ -33,10 +33,22 @@
 # e.g.
 #   interface_name=$(ip a |awk '/: e/{gsub(/:/,"");print $2}')
 
+thishostname=$(hostname)
+interfacename=$(ip a | awk '/: e/{gsub(/:/,"");print $2}')
+lanaddress=$(ip a s $interfacename | awk '/inet /{gsub(/\/.*/,"");print $2}')
+lanhostname=$(getent hosts $lanaddress | awk '/inet /{gsub(/\/.*/,"");print $2}' | awk '{print $2}')
+routeraddress=$(route -n |grep 'UG[ \t]' | awk '{print $2}')
+routerhostname=$(route |grep "default" | awk '{print $2}')
+ipexternal=$(curl -s icanhazip.com)
+nameexternal=$(getent hosts $ipexternal | awk '{print $2}')
+
 cat <<EOF
-Hostname        : $(hostname)
-LAN Address     : $(ip a s $'(ip a |awk '/: e/{gsub(/:/,"");print$2}')'|awk '/inet /{gsub(/\/.*/,"");print $2}')
-LAN Hostname    : $(getent hosts $'(ip a s $(ip a |awk '/: e/'{gsub(/:/,"");print$2}'))'|awk '/inet /{gsub(/\/.*/,"");print $2}' | awk '{print $2}')
-External IP     : $(curl -s icanhazip.com)
-External Name   : $(getent hosts $'(curl -s icanhazip.com)' | awk '{print $2}')
+
+Hostname        : $thishostname
+LAN Address     : $lanaddress
+LAN Hostname    : $lanhostname
+Router Address  : $routeraddress
+Router Hostname : $routerhostname
+External IP     : $ipexternal
+External Name   : $nameexternal
 EOF
